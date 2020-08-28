@@ -19,5 +19,41 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--very-light);
+}
+
+Nav {
+  position: sticky;
+  top: 0;
+  background-color: var(--middle);
+  padding: 1vh;
+  overflow-y: visible;
+  border-color: var(--very-dark);
+  border: 2px solid;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: var(--middle);
+}
+
+.ArticleBody {
+  text-align: left;
+}
+
+.CommentBody {
+  text-align: left;
+}
+
+.sortbar {
+  padding: 10px;
+  background-color: var(--middle);
+}
+
+button {
+  margin: 1px;
 }
