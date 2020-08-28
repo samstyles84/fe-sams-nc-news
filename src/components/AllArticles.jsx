@@ -5,33 +5,42 @@ import Loader from "./Loader";
 import SortBar from "./SortBar";
 
 class AllArticles extends Component {
-  state = { articles: [], isLoading: true, order: "asc" };
+  state = { articles: [], isLoading: true, order: "asc", topic: "all" };
 
   componentDidMount() {
-    console.log("mounted with: ", this.props);
-
     let { order } = this.state;
     if (this.props.sort_by) {
       if (order === "desc") order = "asc";
       else order = "desc";
     }
 
+    let { topic } = this.state;
+    if (this.props.topic) topic = this.props.topic;
+
     this.getArticles(this.props).then((articles) => {
-      this.setState({ articles, isLoading: false, order: order });
+      this.setState({ articles, isLoading: false, order: order, topic: topic });
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("updated with: ", this.props);
     if (prevProps !== this.props) {
       let { order } = this.state;
+
       if (this.props.sort_by) {
         if (order === "desc") order = "asc";
         else order = "desc";
       }
 
+      let { topic } = this.state;
+      if (this.props.topic) topic = this.props.topic;
+
       this.getArticles(this.props, order).then((articles) => {
-        this.setState({ articles, isLoading: false, order: order });
+        this.setState({
+          articles,
+          isLoading: false,
+          order: order,
+          topic: topic,
+        });
       });
     }
   }
@@ -43,9 +52,10 @@ class AllArticles extends Component {
   render() {
     if (this.state.isLoading) return <Loader />;
     const { articles } = this.state;
+    const { topic } = this.state;
     return (
       <div>
-        <SortBar />
+        <SortBar topic={topic} />
         <ArticlesList articles={articles} />
       </div>
     );

@@ -11,10 +11,6 @@ class CommentsList extends Component {
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log("Comments component updated");
-  }
-
   getComments = (article_id) => {
     return api.fetchComments(article_id);
   };
@@ -22,7 +18,6 @@ class CommentsList extends Component {
   render() {
     if (this.state.isLoading) return <Loader />;
     const { comments } = this.state;
-    console.log(comments);
 
     return (
       <ul>

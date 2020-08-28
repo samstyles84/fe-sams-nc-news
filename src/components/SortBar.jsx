@@ -1,22 +1,31 @@
-import React from "react";
-
 import { Link } from "@reach/router";
 
-const SortBar = () => {
-  return (
-    <div className="sortbar">
-      Sort by:
-      <Link to="/articles/sort/created_at">
-        <button>Date created</button>
-      </Link>
-      <Link to="/articles/sort/comment_count">
-        <button>Comment count</button>
-      </Link>
-      <Link to="/articles/sort/votes">
-        <button>Votes</button>
-      </Link>
-    </div>
-  );
-};
+import React, { Component } from "react";
+
+class SortBar extends Component {
+  render() {
+    const { topic } = this.props;
+    let sortString = "/articles/sort/";
+
+    if (topic !== "all") {
+      sortString = `/articles/topics/${topic}/`;
+    }
+
+    return (
+      <div className="sortbar">
+        Sort by:
+        <Link to={`${sortString}created_at`}>
+          <button>Date created</button>
+        </Link>
+        <Link to={`${sortString}comment_count`}>
+          <button>Comment count</button>
+        </Link>
+        <Link to={`${sortString}votes`}>
+          <button>Votes</button>
+        </Link>
+      </div>
+    );
+  }
+}
 
 export default SortBar;
