@@ -6,7 +6,7 @@ class ToggleViewer extends Component {
     const { isVisible } = this.state;
 
     return (
-      <div>
+      <div className="ToggleComments">
         <button onClick={this.toggleView}>
           {isVisible ? "Hide Comments" : "Show Comments"}
         </button>

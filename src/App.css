@@ -32,17 +32,70 @@ Nav {
   border: 2px solid;
 }
 
+.ArticleList {
+  display: grid;
+  grid-template-columns: minmax(10px, auto) minmax(300px, 500px) minmax(
+      10px,
+      auto
+    );
+
+  border: 2px solid;
+  border-color: var(--very-dark);
+}
+
 ul {
   list-style: none;
+  grid-column: 2/3;
   padding-left: 0;
 }
 
 li {
   background-color: var(--middle);
+  border: 2px solid;
+  border-color: var(--very-dark);
+  margin: 10px;
+}
+
+.ArticleContainer {
+  display: grid;
+  grid-template-columns: minmax(10px, auto) minmax(300px, 500px) minmax(
+      10px,
+      auto
+    );
+  border: 2px solid;
+  border-color: var(--very-dark);
+}
+
+.SingleArticle {
+  grid-column: 2/3;
+  background-color: var(--middle);
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .ArticleBody {
   text-align: left;
+  padding: 10px;
+}
+
+.ToggleComments {
+  grid-column: 2/3;
+}
+
+.CommentsContainer {
+  display: grid;
+  grid-template-columns: minmax(10px, auto) minmax(300px, 500px) minmax(
+      10px,
+      auto
+    );
+  border: 2px solid;
+  border-color: var(--very-dark);
+  margin-top: 10px;
+}
+
+.SingleComment {
+  background-color: var(--middle);
+  margin: 10px;
 }
 
 .CommentBody {

@@ -20,20 +20,22 @@ class CommentsList extends Component {
     const { comments } = this.state;
 
     return (
-      <ul>
-        {comments.map((comment) => {
-          return (
-            <section key={comment.comment_id}>
-              <p>
-                by {comment.author}, {comment.created_at}
-              </p>
-              <p className="CommentBody">{comment.body}</p>
-              <h6>Votes: {comment.votes}</h6>
-              <br />
-            </section>
-          );
-        })}
-      </ul>
+      <div className="CommentsContainer">
+        <ul>
+          {comments.map((comment) => {
+            return (
+              <section key={comment.comment_id} className="SingleComment">
+                <p>
+                  by {comment.author}, {comment.created_at}
+                </p>
+                <p className="CommentBody">{comment.body}</p>
+                <h6>Votes: {comment.votes}</h6>
+                <br />
+              </section>
+            );
+          })}
+        </ul>
+      </div>
     );
   }
 }

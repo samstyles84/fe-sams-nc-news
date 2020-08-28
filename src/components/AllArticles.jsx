@@ -56,7 +56,9 @@ class AllArticles extends Component {
     return (
       <div>
         <SortBar topic={topic} />
-        <ArticlesList articles={articles} />
+        <section className="ArticleList">
+          <ArticlesList articles={articles} />
+        </section>
       </div>
     );
   }
