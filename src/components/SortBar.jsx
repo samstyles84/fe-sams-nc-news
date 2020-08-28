@@ -9,10 +9,10 @@ const SortBar = () => {
       <Link to="/articles/sort/created_at">
         <button>Date created</button>
       </Link>
-      <Link to="?sort_by=comment_count">
+      <Link to="/articles/sort/comment_count">
         <button>Comment count</button>
       </Link>
-      <Link to="?sort_by=votes">
+      <Link to="/articles/sort/votes">
         <button>Votes</button>
       </Link>
     </div>
