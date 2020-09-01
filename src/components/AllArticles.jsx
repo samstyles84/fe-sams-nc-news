@@ -57,6 +57,7 @@ class AllArticles extends Component {
       <div>
         <SortBar topic={topic} />
         <section className="ArticleList">
+          <h3 className="ArticlesHeading">{topic} articles</h3>
           <ArticlesList articles={articles} />
         </section>
       </div>

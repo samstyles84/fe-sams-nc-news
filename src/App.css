@@ -32,15 +32,23 @@ Nav {
   border: 2px solid;
 }
 
+.Homepage {
+  border: 2px solid;
+  border-color: var(--very-dark);
+}
+
 .ArticleList {
   display: grid;
   grid-template-columns: minmax(10px, auto) minmax(300px, 500px) minmax(
       10px,
       auto
     );
-
   border: 2px solid;
   border-color: var(--very-dark);
+}
+
+.ArticlesHeading {
+  grid-column: 2/3;
 }
 
 ul {
@@ -71,6 +79,8 @@ li {
   background-color: var(--middle);
   margin-top: 10px;
   margin-bottom: 10px;
+  border: 2px solid;
+  border-color: var(--very-dark);
 }
 
 .ArticleBody {

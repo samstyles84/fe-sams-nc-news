@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ToggleViewer from "./ToggleViewer";
 import CommentsList from "./CommentsList";
+import Voter from "./Voter";
 
 class ArticleCard extends Component {
   state = {};
@@ -14,10 +15,14 @@ class ArticleCard extends Component {
             by {article.author}, {article.created_at}
           </p>
           <p className="ArticleBody">{article.body}</p>
-          <h6>
-            Topic: {article.topic} Votes: {article.votes} Comments:
-            {article.comment_count}
-          </h6>
+          <h6>Topic: {article.topic}</h6>
+          <h6>Comments: {article.comment_count}</h6>
+          <Voter
+            id={article.article_id}
+            votes={article.votes}
+            type="articles"
+          />
+
           <br />
         </article>
         <ToggleViewer>

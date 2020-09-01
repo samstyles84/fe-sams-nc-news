@@ -33,3 +33,7 @@ export const fetchComments = (article_id) => {
       return comments.data.comments;
     });
 };
+
+export const patchVotes = (id, inc_votes, type) => {
+  return axiosInstance.patch(`/${type}/${id}`, { inc_votes });
+};

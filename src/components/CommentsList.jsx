@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import Loader from "./Loader";
 
+import Voter from "./Voter";
+
 class CommentsList extends Component {
   state = { comments: [], isLoading: true };
 
@@ -29,7 +31,11 @@ class CommentsList extends Component {
                   by {comment.author}, {comment.created_at}
                 </p>
                 <p className="CommentBody">{comment.body}</p>
-                <h6>Votes: {comment.votes}</h6>
+                <Voter
+                  id={comment.comment_id}
+                  votes={comment.votes}
+                  type="comments"
+                />
                 <br />
               </section>
             );
