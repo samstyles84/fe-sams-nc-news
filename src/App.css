@@ -13,7 +13,7 @@
 
 .App-header {
   background-color: var(--quite-dark);
-  min-height: 20vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,6 +88,15 @@ li {
   padding: 10px;
 }
 
+.CommentsSection {
+  grid-column: 2/3;
+}
+
+.CommentAdder {
+  border: 2px solid;
+  border-color: var(--very-dark);
+}
+
 .ToggleComments {
   grid-column: 2/3;
 }
@@ -98,7 +107,7 @@ li {
       10px,
       auto
     );
-  border: 2px solid;
+  border: 1px solid;
   border-color: var(--very-dark);
   margin-top: 10px;
 }

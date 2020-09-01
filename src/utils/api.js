@@ -29,11 +29,17 @@ export const fetchArticle = (article_id) => {
 export const fetchComments = (article_id) => {
   return axiosInstance
     .get(`/articles/${article_id}/comments`)
-    .then((comments) => {
-      return comments.data.comments;
+    .then(({ data: { comments } }) => {
+      console.log("got comments,", comments);
+      return comments;
     });
 };
 
 export const patchVotes = (id, inc_votes, type) => {
   return axiosInstance.patch(`/${type}/${id}`, { inc_votes });
+};
+
+export const postComment = (id, comment) => {
+  console.log("posting comment", id, comment);
+  return axiosInstance.post(`/articles/${id}/comments`, comment);
 };
