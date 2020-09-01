@@ -14,7 +14,9 @@ class ArticleCard extends Component {
           <p>
             by {article.author}, {article.created_at}
           </p>
+          <hr />
           <p className="ArticleBody">{article.body}</p>
+          <hr />
           <h6>Topic: {article.topic}</h6>
           <Voter
             id={article.article_id}

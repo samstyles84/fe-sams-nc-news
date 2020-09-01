@@ -16,7 +16,8 @@ class Voter extends Component {
     const { votes } = this.props;
     const { optimisticVotes } = this.state;
     return (
-      <section>
+      <section className="votingBar">
+        <br />
         <button
           onClick={(event) => this.updateVote(1)}
           disabled={optimisticVotes === 1}

@@ -30,7 +30,6 @@ export const fetchComments = (article_id) => {
   return axiosInstance
     .get(`/articles/${article_id}/comments`)
     .then(({ data: { comments } }) => {
-      console.log("got comments,", comments);
       return comments;
     });
 };
@@ -40,6 +39,5 @@ export const patchVotes = (id, inc_votes, type) => {
 };
 
 export const postComment = (id, comment) => {
-  console.log("posting comment", id, comment);
   return axiosInstance.post(`/articles/${id}/comments`, comment);
 };

@@ -83,9 +83,26 @@ li {
   border-color: var(--very-dark);
 }
 
+hr {
+  margin: 0;
+}
+
 .ArticleBody {
   text-align: left;
   padding: 10px;
+  margin: 0;
+  font-size: larger;
+  background-color: var(--very-light);
+}
+
+.votingBar {
+  display: grid;
+  grid-template-columns:
+    minmax(20px, auto) minmax(100px, auto) minmax(80px, 300px) minmax(
+      80px,
+      auto
+    )
+    minmax(20px, auto);
 }
 
 .CommentsSection {

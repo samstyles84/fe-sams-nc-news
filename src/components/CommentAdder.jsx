@@ -59,7 +59,10 @@ class CommentAdder extends Component {
             onChange={this.handleChange}
           />
           <br />
+          <br />
           <button>Add comment</button>
+          <br />
+          <br />
         </form>
       </section>
     );
