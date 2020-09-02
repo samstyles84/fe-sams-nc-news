@@ -3,7 +3,6 @@ import CommentAdder from "./CommentAdder";
 import * as api from "../utils/api";
 import Loader from "./Loader";
 import CommentsList from "./CommentsList";
-import CommentDeleter from "./CommentDeleter";
 
 class Comments extends Component {
   state = {
@@ -46,12 +45,11 @@ class Comments extends Component {
     });
   };
 
-  deleteComment = (revisedComments) => {
+  deleteComment = (removedComment) => {
     this.setState((currentState) => {
       return {
-        comments: revisedComments,
-        optimisticComments:
-          revisedComments.length - this.props.article.comment_count,
+        comments: [...currentState.comments],
+        optimisticComments: currentState.optimisticComments - 1,
       };
     });
   };
@@ -60,6 +58,8 @@ class Comments extends Component {
     const { article, loggedInUser } = this.props;
     const { isVisible, isLoading } = this.state;
     if (isLoading) return <Loader />;
+    const optimisticNoOfComments =
+      article.comment_count + this.state.optimisticComments;
     return (
       <div className="CommentsSection">
         <br />
@@ -68,23 +68,17 @@ class Comments extends Component {
           article_id={article.article_id}
           loggedInUser={loggedInUser}
         />
-        <CommentDeleter
-          deleteComment={this.deleteComment}
-          comments={this.state.comments}
-          loggedInUser={loggedInUser}
-        />
-        <h6>
-          There are currently{" "}
-          {article.comment_count + this.state.optimisticComments} comments.
-        </h6>
         <div className="ToggleComments">
           <button onClick={this.toggleView}>
-            {isVisible ? "Hide Comments" : "Show Comments"}
+            {isVisible
+              ? `Hide Comments (${optimisticNoOfComments})`
+              : `Show Comments (${optimisticNoOfComments})`}
           </button>
           {isVisible && (
             <CommentsList
               comments={this.state.comments}
               loggedInUser={loggedInUser}
+              deleteComment={this.deleteComment}
             />
           )}
         </div>

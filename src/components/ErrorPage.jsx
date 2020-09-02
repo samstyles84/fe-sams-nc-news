@@ -2,9 +2,12 @@ import React from "react";
 
 const ErrorPage = ({ msg, status }) => {
   return (
-    <p>
-      An error has occurred with status: {status}. The response says {msg}
-    </p>
+    <section className="ErrorPage">
+      <h3>Sorry!</h3>
+      <p>
+        An error has occurred with status {status}: {msg}
+      </p>
+    </section>
   );
 };
 

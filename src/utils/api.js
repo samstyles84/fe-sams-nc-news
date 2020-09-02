@@ -2,12 +2,24 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: "https://nc-hosting-samstyles84.herokuapp.com/api",
+  timeout: 2000,
 });
 
 export const fetchTopics = () => {
   return axiosInstance.get("/topics").then((topics) => {
     return topics.data.topics;
   });
+  // .catch((error) => {
+  //   console.log(error.code);
+  //   console.log(error.message);
+  //   console.log(error.stack);
+  //   const err = {};
+  //   if (err.code === "ECONNABORTED") {
+  //     err.msg = error.message;
+  //     err.status = 408;
+  //   }
+  //   return err;
+  // });
 };
 
 export const fetchArticles = ({ sort_by, topic }, order) => {

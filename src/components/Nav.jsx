@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import { Link } from "@reach/router";
+import ErrorPage from "./ErrorPage";
 
 class Nav extends Component {
-  state = { topics: [] };
+  state = { topics: [], err: null };
 
   componentDidMount() {
     this.getTopics().then((topics) => {
@@ -12,11 +13,17 @@ class Nav extends Component {
   }
 
   getTopics = () => {
-    return api.fetchTopics();
+    return api.fetchTopics().catch((error) => {
+      this.setState({
+        isLoading: false,
+        err: { msg: error.message, status: 408 },
+      });
+    });
   };
 
   render() {
-    const { topics } = this.state;
+    const { topics, err } = this.state;
+    if (err) return <ErrorPage {...err} />;
     return (
       <nav>
         <Link to="/">

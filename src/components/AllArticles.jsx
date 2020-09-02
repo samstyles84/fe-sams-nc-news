@@ -3,9 +3,16 @@ import ArticlesList from "./ArticlesList";
 import * as api from "../utils/api";
 import Loader from "./Loader";
 import SortBar from "./SortBar";
+import ErrorPage from "./ErrorPage";
 
 class AllArticles extends Component {
-  state = { articles: [], isLoading: true, order: "asc", topic: "all" };
+  state = {
+    articles: [],
+    isLoading: true,
+    order: "asc",
+    topic: "all",
+    err: null,
+  };
 
   componentDidMount() {
     let { order } = this.state;
@@ -17,9 +24,22 @@ class AllArticles extends Component {
     let { topic } = this.state;
     if (this.props.topic) topic = this.props.topic;
 
-    this.getArticles(this.props).then((articles) => {
-      this.setState({ articles, isLoading: false, order: order, topic: topic });
-    });
+    this.getArticles(this.props)
+      .then((articles) => {
+        this.setState({
+          articles,
+          isLoading: false,
+          order: order,
+          topic: topic,
+          err: null,
+        });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: { msg: response.data.msg, status: response.status },
+        });
+      });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -34,14 +54,22 @@ class AllArticles extends Component {
       let { topic } = this.state;
       if (this.props.topic) topic = this.props.topic;
 
-      this.getArticles(this.props, order).then((articles) => {
-        this.setState({
-          articles,
-          isLoading: false,
-          order: order,
-          topic: topic,
+      this.getArticles(this.props, order)
+        .then((articles) => {
+          this.setState({
+            articles,
+            isLoading: false,
+            order: order,
+            topic: topic,
+            err: null,
+          });
+        })
+        .catch(({ response }) => {
+          this.setState({
+            isLoading: false,
+            err: { msg: response.data.msg, status: response.status },
+          });
         });
-      });
     }
   }
 
@@ -50,9 +78,9 @@ class AllArticles extends Component {
   };
 
   render() {
-    if (this.state.isLoading) return <Loader />;
-    const { articles } = this.state;
-    const { topic } = this.state;
+    const { articles, topic, err, isLoading } = this.state;
+    if (isLoading) return <Loader />;
+    if (err) return <ErrorPage {...err} />;
     return (
       <div>
         <SortBar topic={topic} />

@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import AllArticles from "./components/AllArticles";
 import Article from "./components/Article";
 import LoginForm from "./components/LoginForm";
+import ErrorPage from "./components/ErrorPage";
 
 import React, { Component } from "react";
 
@@ -36,6 +37,7 @@ class App extends Component {
             path="/articles/:article_id"
             loggedInUser={this.state.loggedInUser}
           />
+          <ErrorPage default status={404} msg={"Path not found"} />
         </Router>
       </div>
     );
