@@ -15,8 +15,9 @@ class CommentAdder extends Component {
       body: this.state.body,
     };
 
-    api.postComment(article_id, comment).then((comment) => {
-      this.props.addComment(comment);
+    api.postComment(article_id, comment).then((newComment) => {
+      console.log(newComment);
+      this.props.addComment(newComment);
     });
 
     this.setState((currentState) => {
@@ -40,7 +41,7 @@ class CommentAdder extends Component {
         <form onSubmit={this.handleSubmit} className="CommentAdder">
           <br />
 
-          <label htmlFor="comment">Comment:</label>
+          <label htmlFor="comment">New Comment:</label>
           <input
             type="text"
             id="body"
@@ -51,7 +52,7 @@ class CommentAdder extends Component {
           <br />
           <br />
           <button disabled={!this.props.loggedInUser || !this.state.body}>
-            Add comment
+            Add
           </button>
           <br />
           <br />

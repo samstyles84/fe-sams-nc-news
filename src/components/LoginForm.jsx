@@ -4,38 +4,30 @@ import * as api from "../utils/api";
 class LoginForm extends Component {
   state = {
     username: null,
-    isValid: true,
     loggedIn: false,
+    err: null,
   };
 
   handleSubmit = (submitEvent) => {
     submitEvent.preventDefault();
-    console.log(this.state.username, "this.state.username");
-
-    if (this.state.username === null) {
-      this.setState((currentState) => {
-        return {
-          isValid: false,
-        };
-      });
-    } else {
-      api.fetchUser(this.state.username).then((res) => {
+    api
+      .fetchUser(this.state.username)
+      .then((res) => {
         if (res.status === 200) {
           this.props.loginUser(this.state.username);
           this.setState((currentState) => {
             return {
               loggedIn: true,
+              err: null,
             };
           });
         }
+      })
+      .catch(({ response }) => {
+        this.setState({
+          err: { msg: response.data.msg, status: response.status },
+        });
       });
-    }
-
-    this.setState((currentState) => {
-      return {
-        isValid: true,
-      };
-    });
   };
 
   handleChange = (changeEvent) => {
@@ -49,7 +41,22 @@ class LoginForm extends Component {
   render() {
     return (
       <section className="LoginForm">
-        {!this.state.loggedIn ? (
+        {this.state.loggedIn ? (
+          <section>
+            Logged in as {this.state.username}
+            <button
+              onClick={() => {
+                this.props.loginUser(null);
+                this.setState({
+                  username: null,
+                  loggedIn: false,
+                });
+              }}
+            >
+              Logout
+            </button>
+          </section>
+        ) : (
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="username">Enter Username: </label>
             <input
@@ -59,23 +66,8 @@ class LoginForm extends Component {
               onChange={this.handleChange}
             />
             <button>Login</button>
+            {this.state.err && <p>User not found</p>}
           </form>
-        ) : (
-          <section>
-            Logged in as {this.state.username}
-            <button
-              onClick={() => {
-                this.props.loginUser(null);
-                this.setState({
-                  username: null,
-                  loggedIn: false,
-                  isValid: true,
-                });
-              }}
-            >
-              Logout
-            </button>
-          </section>
         )}
       </section>
     );

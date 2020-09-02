@@ -47,6 +47,5 @@ export const deleteComments = (id) => {
 };
 
 export const fetchUser = (username) => {
-  console.log("fetching", username);
   return axiosInstance.get(`/users/${username}`);
 };

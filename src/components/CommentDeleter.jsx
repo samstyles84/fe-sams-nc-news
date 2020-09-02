@@ -13,28 +13,37 @@ class CommentDeleter extends Component {
     const userComments = this.props.comments.filter((comment) => {
       return comment.author === loggedInUser;
     });
+
     const nonUserComments = this.props.comments.filter((comment) => {
       return comment.author !== loggedInUser;
     });
 
     const commentIDs = [];
 
-    userComments.forEach((comment) => {
-      commentIDs.push(comment.comment_id);
-    });
-
-    return Promise.all(
-      userComments.map((comment) => {
-        return api.deleteComments(comment.comment_id).then(() => {});
-      })
-    ).then(() => {
+    if (userComments.length === 0) {
       this.props.deleteComment(nonUserComments);
       this.setState((currentState) => {
         return {
           commentsToDelete: [],
         };
       });
-    });
+    } else {
+      userComments.forEach((comment) => {
+        commentIDs.push(comment.comment_id);
+      });
+      return Promise.all(
+        userComments.map((comment) => {
+          return api.deleteComments(comment.comment_id).then(() => {});
+        })
+      ).then(() => {
+        this.props.deleteComment(nonUserComments);
+        this.setState((currentState) => {
+          return {
+            commentsToDelete: [],
+          };
+        });
+      });
+    }
   };
 
   render() {

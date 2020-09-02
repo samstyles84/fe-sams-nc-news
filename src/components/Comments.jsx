@@ -49,7 +49,7 @@ class Comments extends Component {
   deleteComment = (revisedComments) => {
     this.setState((currentState) => {
       return {
-        comments: [revisedComments],
+        comments: revisedComments,
         optimisticComments:
           revisedComments.length - this.props.article.comment_count,
       };

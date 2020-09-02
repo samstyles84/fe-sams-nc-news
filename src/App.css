@@ -138,11 +138,8 @@ hr {
 .votingBar {
   display: grid;
   grid-template-columns:
-    minmax(20px, auto) minmax(100px, auto) minmax(80px, 300px) minmax(
-      80px,
-      auto
-    )
-    minmax(20px, auto);
+    minmax(10px, auto) minmax(80px, auto) minmax(80px, 300px) minmax(80px, auto)
+    minmax(10px, auto);
   margin: 10px;
 }
 
@@ -167,8 +164,8 @@ hr {
 
 .CommentsContainer {
   display: grid;
-  grid-template-columns: minmax(10px, auto) minmax(300px, 500px) minmax(
-      10px,
+  grid-template-columns: minmax(5px, auto) minmax(270px, 500px) minmax(
+      5px,
       auto
     );
   border: 1px solid;
