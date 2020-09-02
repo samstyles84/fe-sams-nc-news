@@ -41,3 +41,12 @@ export const patchVotes = (id, inc_votes, type) => {
 export const postComment = (id, comment) => {
   return axiosInstance.post(`/articles/${id}/comments`, comment);
 };
+
+export const deleteComments = (id) => {
+  return axiosInstance.delete(`/comments/${id}`);
+};
+
+export const fetchUser = (username) => {
+  console.log("fetching", username);
+  return axiosInstance.get(`/users/${username}`);
+};

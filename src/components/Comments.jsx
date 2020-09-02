@@ -3,6 +3,7 @@ import CommentAdder from "./CommentAdder";
 import * as api from "../utils/api";
 import Loader from "./Loader";
 import CommentsList from "./CommentsList";
+import CommentDeleter from "./CommentDeleter";
 
 class Comments extends Component {
   state = {
@@ -45,8 +46,18 @@ class Comments extends Component {
     });
   };
 
+  deleteComment = (revisedComments) => {
+    this.setState((currentState) => {
+      return {
+        comments: [revisedComments],
+        optimisticComments:
+          revisedComments.length - this.props.article.comment_count,
+      };
+    });
+  };
+
   render() {
-    const { article } = this.props;
+    const { article, loggedInUser } = this.props;
     const { isVisible, isLoading } = this.state;
     if (isLoading) return <Loader />;
     return (
@@ -55,6 +66,12 @@ class Comments extends Component {
         <CommentAdder
           addComment={this.addComment}
           article_id={article.article_id}
+          loggedInUser={loggedInUser}
+        />
+        <CommentDeleter
+          deleteComment={this.deleteComment}
+          comments={this.state.comments}
+          loggedInUser={loggedInUser}
         />
         <h6>
           There are currently{" "}
@@ -64,7 +81,12 @@ class Comments extends Component {
           <button onClick={this.toggleView}>
             {isVisible ? "Hide Comments" : "Show Comments"}
           </button>
-          {isVisible && <CommentsList comments={this.state.comments} />}
+          {isVisible && (
+            <CommentsList
+              comments={this.state.comments}
+              loggedInUser={loggedInUser}
+            />
+          )}
         </div>
         <br />
       </div>

@@ -22,11 +22,16 @@
   color: var(--very-light);
 }
 
-Nav {
+hr {
+  color: var(--very-dark);
+}
+
+nav {
   position: sticky;
   top: 0;
   background-color: var(--middle);
   padding: 1vh;
+  height: 50px;
   overflow-y: visible;
   border-color: var(--very-dark);
   border: 2px solid;
@@ -35,6 +40,36 @@ Nav {
 .Homepage {
   border: 2px solid;
   border-color: var(--very-dark);
+  margin-top: -2px;
+}
+
+.LoginForm {
+  margin: 0;
+  padding: 5px;
+  position: sticky;
+  top: 73px;
+  overflow-y: visible;
+  border: 2px solid;
+  border-color: var(--very-dark);
+  border-top: 0;
+  background-color: var(--very-light);
+}
+
+.sortbar {
+  padding: 10px;
+  background-color: var(--middle);
+  position: sticky;
+  top: 108px;
+  overflow-y: visible;
+  border: 2px solid;
+  border-color: var(--very-dark);
+  border-top: 0;
+}
+
+.Loader {
+  border: 2px solid;
+  border-color: var(--very-dark);
+  border-top: 0;
 }
 
 .ArticleList {
@@ -45,16 +80,20 @@ Nav {
     );
   border: 2px solid;
   border-color: var(--very-dark);
+  border-top: 0;
 }
 
 .ArticlesHeading {
   grid-column: 2/3;
+  margin: 15px;
+  padding: 0;
 }
 
 ul {
   list-style: none;
   grid-column: 2/3;
   padding-left: 0;
+  margin-top: 0;
 }
 
 li {
@@ -72,6 +111,7 @@ li {
     );
   border: 2px solid;
   border-color: var(--very-dark);
+  border-top: 0;
 }
 
 .SingleArticle {
@@ -103,6 +143,7 @@ hr {
       auto
     )
     minmax(20px, auto);
+  margin: 10px;
 }
 
 .CommentsSection {
@@ -112,6 +153,12 @@ hr {
 .CommentAdder {
   border: 2px solid;
   border-color: var(--very-dark);
+}
+
+.CommentDeleter {
+  border: 2px solid;
+  border-color: var(--very-dark);
+  border-top: 0;
 }
 
 .ToggleComments {
@@ -136,11 +183,6 @@ hr {
 
 .CommentBody {
   text-align: left;
-}
-
-.sortbar {
-  padding: 10px;
-  background-color: var(--middle);
 }
 
 button {

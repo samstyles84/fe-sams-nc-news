@@ -3,16 +3,15 @@ import * as api from "../utils/api";
 
 class CommentAdder extends Component {
   state = {
-    username: "",
     body: "",
   };
 
   handleSubmit = (submitEvent) => {
     submitEvent.preventDefault();
 
-    const { article_id } = this.props;
+    const { article_id, loggedInUser } = this.props;
     const comment = {
-      username: this.state.username,
+      username: loggedInUser,
       body: this.state.body,
     };
 
@@ -22,7 +21,6 @@ class CommentAdder extends Component {
 
     this.setState((currentState) => {
       return {
-        username: "",
         body: "",
       };
     });
@@ -41,15 +39,7 @@ class CommentAdder extends Component {
       <section>
         <form onSubmit={this.handleSubmit} className="CommentAdder">
           <br />
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-          <br />
+
           <label htmlFor="comment">Comment:</label>
           <input
             type="text"
@@ -60,7 +50,9 @@ class CommentAdder extends Component {
           />
           <br />
           <br />
-          <button>Add comment</button>
+          <button disabled={!this.props.loggedInUser || !this.state.body}>
+            Add comment
+          </button>
           <br />
           <br />
         </form>

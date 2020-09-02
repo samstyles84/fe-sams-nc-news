@@ -1,7 +1,7 @@
 import Voter from "./Voter";
 import React from "react";
 
-const CommentsList = ({ comments }) => {
+const CommentsList = ({ comments, loggedInUser }) => {
   return (
     <div className="CommentsContainer">
       <ul>
@@ -16,6 +16,7 @@ const CommentsList = ({ comments }) => {
                 id={comment.comment_id}
                 votes={comment.votes}
                 type="comments"
+                loggedInUser={loggedInUser}
               />
               <br />
             </section>

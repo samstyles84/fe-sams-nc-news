@@ -27,7 +27,9 @@ class Article extends Component {
   render() {
     if (this.state.isLoading) return <Loader />;
     const { article } = this.state;
-    return <ArticleCard article={article} />;
+    return (
+      <ArticleCard article={article} loggedInUser={this.props.loggedInUser} />
+    );
   }
 }
 

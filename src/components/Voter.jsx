@@ -13,21 +13,21 @@ class Voter extends Component {
     });
   };
   render() {
-    const { votes } = this.props;
+    const { votes, loggedInUser } = this.props;
     const { optimisticVotes } = this.state;
     return (
       <section className="votingBar">
         <br />
         <button
           onClick={(event) => this.updateVote(1)}
-          disabled={optimisticVotes === 1}
+          disabled={optimisticVotes === 1 || !loggedInUser}
         >
           Upvote!
         </button>
         Current votes: {votes + optimisticVotes}
         <button
           onClick={(event) => this.updateVote(-1)}
-          disabled={optimisticVotes === -1}
+          disabled={optimisticVotes === -1 || !loggedInUser}
         >
           Downvote!
         </button>
