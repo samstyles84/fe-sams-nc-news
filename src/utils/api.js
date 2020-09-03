@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: "https://nc-hosting-samstyles84.herokuapp.com/api",
-  timeout: 0,
+  timeout: 3000,
 });
 
 export const fetchTopics = () => {

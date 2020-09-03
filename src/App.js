@@ -37,6 +37,7 @@ class App extends Component {
             path="/articles/:article_id"
             loggedInUser={this.state.loggedInUser}
           />
+          <ErrorPage path="/error" status={408} msg={"Server not responding"} />
           <ErrorPage default status={404} msg={"Path not found"} />
         </Router>
       </div>

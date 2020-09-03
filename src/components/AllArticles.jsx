@@ -4,6 +4,7 @@ import * as api from "../utils/api";
 import Loader from "./Loader";
 import SortBar from "./SortBar";
 import ErrorPage from "./ErrorPage";
+import { navigate } from "@reach/router";
 
 class AllArticles extends Component {
   state = {
@@ -35,10 +36,14 @@ class AllArticles extends Component {
         });
       })
       .catch(({ response }) => {
-        this.setState({
-          isLoading: false,
-          err: { msg: response.data.msg, status: response.status },
-        });
+        if (response) {
+          this.setState({
+            isLoading: false,
+            err: { msg: response.data.msg, status: response.status },
+          });
+        } else {
+          navigate(`/error`);
+        }
       });
   }
 
@@ -65,10 +70,14 @@ class AllArticles extends Component {
           });
         })
         .catch(({ response }) => {
-          this.setState({
-            isLoading: false,
-            err: { msg: response.data.msg, status: response.status },
-          });
+          if (response) {
+            this.setState({
+              isLoading: false,
+              err: { msg: response.data.msg, status: response.status },
+            });
+          } else {
+            navigate(`/error`);
+          }
         });
     }
   }
