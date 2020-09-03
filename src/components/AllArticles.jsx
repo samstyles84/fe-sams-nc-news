@@ -10,28 +10,44 @@ class AllArticles extends Component {
   state = {
     articles: [],
     isLoading: true,
-    order: "asc",
+    order: true,
     topic: "all",
     err: null,
+    sort_by: "created_at",
   };
 
   componentDidMount() {
-    let { order } = this.state;
-    if (this.props.sort_by) {
-      if (order === "desc") order = "asc";
-      else order = "desc";
+    let newTopic = this.state.topic;
+    if (this.props.topic && this.props.topic !== this.state.topic) {
+      newTopic = this.props.topic;
     }
+    this.setState({ topic: newTopic }, () => {
+      this.getArticles();
+    });
+  }
 
-    let { topic } = this.state;
-    if (this.props.topic) topic = this.props.topic;
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.topic && this.props.topic !== prevState.topic) {
+      this.setState({ topic: this.props.topic }, () => {
+        this.getArticles();
+      });
+    }
+    if (
+      this.state.sort_by !== prevState.sort_by ||
+      this.state.order !== prevState.order
+    ) {
+      this.getArticles();
+    }
+  }
 
-    this.getArticles(this.props)
+  getArticles = () => {
+    const { sort_by, topic, order } = this.state;
+    return api
+      .fetchArticles(sort_by, topic, order)
       .then((articles) => {
         this.setState({
           articles,
           isLoading: false,
-          order: order,
-          topic: topic,
           err: null,
         });
       })
@@ -45,45 +61,10 @@ class AllArticles extends Component {
           navigate(`/error`);
         }
       });
-  }
+  };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps !== this.props) {
-      let { order } = this.state;
-
-      if (this.props.sort_by) {
-        if (order === "desc") order = "asc";
-        else order = "desc";
-      }
-
-      let { topic } = this.state;
-      if (this.props.topic) topic = this.props.topic;
-
-      this.getArticles(this.props, order)
-        .then((articles) => {
-          this.setState({
-            articles,
-            isLoading: false,
-            order: order,
-            topic: topic,
-            err: null,
-          });
-        })
-        .catch(({ response }) => {
-          if (response) {
-            this.setState({
-              isLoading: false,
-              err: { msg: response.data.msg, status: response.status },
-            });
-          } else {
-            navigate(`/error`);
-          }
-        });
-    }
-  }
-
-  getArticles = (props, order) => {
-    return api.fetchArticles(props, order);
+  getSortMethod = (clickevent) => {
+    this.setState({ sort_by: clickevent.target.id, order: !this.state.order });
   };
 
   render() {
@@ -92,7 +73,7 @@ class AllArticles extends Component {
     if (err) return <ErrorPage {...err} />;
     return (
       <div>
-        <SortBar topic={topic} />
+        <SortBar getSortMethod={this.getSortMethod} />
         <section className="ArticleList">
           <h3 className="ArticlesHeading">{topic} articles</h3>
           <ArticlesList articles={articles} />

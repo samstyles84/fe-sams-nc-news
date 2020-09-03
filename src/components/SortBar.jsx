@@ -1,25 +1,18 @@
-import { Link } from "@reach/router";
-
 import React from "react";
 
-const SortBar = (topic) => {
-  let sortString = "/articles/sort/";
-
-  if (topic !== "all") {
-    sortString = `/articles/topics/${topic}/`;
-  }
+const SortBar = ({ getSortMethod }) => {
   return (
     <div className="sortbar">
       Sort by:
-      <Link to={`${sortString}created_at`}>
-        <button>Date created</button>
-      </Link>
-      <Link to={`${sortString}comment_count`}>
-        <button>Comment count</button>
-      </Link>
-      <Link to={`${sortString}votes`}>
-        <button>Votes</button>
-      </Link>
+      <button name="created_at" id="created_at" onClick={getSortMethod}>
+        Date created
+      </button>
+      <button name="comment_count" id="comment_count" onClick={getSortMethod}>
+        Comment count
+      </button>
+      <button name="votes" id="votes" onClick={getSortMethod}>
+        Votes
+      </button>
     </div>
   );
 };

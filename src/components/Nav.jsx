@@ -35,7 +35,7 @@ class Nav extends Component {
         <Link to="/">
           <button>Home</button>
         </Link>
-        <Link to="/articles">
+        <Link to="/articles/topics/all">
           <button>All Articles</button>
         </Link>
         <br />

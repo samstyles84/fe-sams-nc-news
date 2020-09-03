@@ -11,7 +11,12 @@ export const fetchTopics = () => {
   });
 };
 
-export const fetchArticles = ({ sort_by, topic }, order) => {
+export const fetchArticles = (sort_by, topic, order) => {
+  if (topic === "all") {
+    topic = null;
+  }
+  order ? (order = "asc") : (order = "desc");
+
   return axiosInstance
     .get("/articles", {
       params: { topic: topic, sort_by: sort_by, order: order },
