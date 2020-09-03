@@ -7,13 +7,14 @@ class ArticleCard extends Component {
 
   render() {
     const { article, loggedInUser } = this.props;
+    const dateitem = new Date(article.created_at).toLocaleDateString();
 
     return (
       <div className="ArticleContainer">
         <article className="SingleArticle">
           <h2>{article.title}</h2>
           <p>
-            by {article.author}, {article.created_at}
+            by {article.author}, {dateitem}
           </p>
           <h6>Topic: {article.topic}</h6>
           <hr />

@@ -5,6 +5,7 @@ const ArticlesList = ({ articles }) => {
   return (
     <ul>
       {articles.map((article) => {
+        const dateitem = new Date(article.created_at).toLocaleDateString();
         return (
           <li key={article.article_id}>
             <Link to={`/articles/${article.article_id}`}>
@@ -12,7 +13,7 @@ const ArticlesList = ({ articles }) => {
             </Link>
             <p>by: {article.author}</p>
             <h4>Topic: {article.topic}</h4>
-            <h6>Created at: {article.created_at}</h6>
+            <h6>Created: {dateitem}</h6>
             <h6>
               Votes: {article.votes} Comments: {article.comment_count}
             </h6>

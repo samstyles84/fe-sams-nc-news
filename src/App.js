@@ -1,4 +1,4 @@
-import "./App.css";
+import "./css/App.css";
 import Header from "./components/Header";
 import { Router } from "@reach/router";
 import Homepage from "./components/Homepage";

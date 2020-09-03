@@ -6,6 +6,21 @@
   --very-light: #f9f5e3;
 }
 
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--very-dark);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 .App {
   text-align: center;
   background-color: var(--very-light);
@@ -150,6 +165,12 @@ hr {
 .CommentAdder {
   border: 2px solid;
   border-color: var(--very-dark);
+}
+
+.resizedTextbox {
+  resize: none;
+  margin: 5px;
+  font-family: inherit;
 }
 
 .ToggleComments {

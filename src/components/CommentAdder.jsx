@@ -38,22 +38,20 @@ class CommentAdder extends Component {
     return (
       <section>
         <form onSubmit={this.handleSubmit} className="CommentAdder">
-          <br />
-
-          <label htmlFor="comment">New Comment:</label>
-          <input
-            type="text"
-            id="body"
+          <label htmlFor="comment"></label>
+          <textarea
             name="body"
+            id="body"
+            cols="30"
+            rows="3"
             value={this.state.body}
             onChange={this.handleChange}
-          />
-          <br />
+            className="resizedTextbox"
+          ></textarea>
           <br />
           <button disabled={!this.props.loggedInUser || !this.state.body}>
-            Add
+            Add new comment
           </button>
-          <br />
           <br />
         </form>
       </section>

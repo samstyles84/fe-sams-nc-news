@@ -7,10 +7,11 @@ const CommentsList = ({ comments, loggedInUser, deleteComment }) => {
     <div className="CommentsContainer">
       <ul>
         {comments.map((comment) => {
+          const dateitem = new Date(comment.created_at).toLocaleDateString();
           return (
             <section key={comment.comment_id} className="SingleComment">
               <p>
-                by {comment.author}, {comment.created_at}
+                by {comment.author}, {dateitem}
               </p>
               <hr />
               <p className="CommentBody">{comment.body}</p>
