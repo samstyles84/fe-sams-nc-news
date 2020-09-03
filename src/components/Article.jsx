@@ -44,6 +44,8 @@ class Article extends Component {
     if (isLoading) return <Loader />;
     if (err) return <ErrorPage {...err} />;
 
+    console.log(this.props.loggedInUser, "this.props.loggedInUser in Article");
+
     return (
       <ArticleCard article={article} loggedInUser={this.props.loggedInUser} />
     );
