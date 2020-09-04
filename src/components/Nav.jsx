@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import { Link } from "@reach/router";
 import { navigate } from "@reach/router";
+import { StyledNav } from "../styling/styledGlobal";
 
 class Nav extends Component {
   state = { topics: [], err: null };
@@ -31,7 +32,7 @@ class Nav extends Component {
     const { topics } = this.state;
 
     return (
-      <nav>
+      <StyledNav>
         <Link to="/">
           <button>Home</button>
         </Link>
@@ -46,7 +47,7 @@ class Nav extends Component {
             </Link>
           );
         })}
-      </nav>
+      </StyledNav>
     );
   }
 }

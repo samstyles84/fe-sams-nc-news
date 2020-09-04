@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as api from "../utils/api";
+import * as api from "../../utils/api";
 
 class CommentAdder extends Component {
   state = {
@@ -36,25 +36,23 @@ class CommentAdder extends Component {
 
   render() {
     return (
-      <section>
-        <form onSubmit={this.handleSubmit} className="CommentAdder">
-          <label htmlFor="comment"></label>
-          <textarea
-            name="body"
-            id="body"
-            cols="30"
-            rows="3"
-            value={this.state.body}
-            onChange={this.handleChange}
-            className="resizedTextbox"
-          ></textarea>
-          <br />
-          <button disabled={!this.props.loggedInUser || !this.state.body}>
-            Add new comment
-          </button>
-          <br />
-        </form>
-      </section>
+      <form onSubmit={this.handleSubmit} className="CommentAdder">
+        <label htmlFor="comment"></label>
+        <textarea
+          name="body"
+          id="body"
+          cols="30"
+          rows="3"
+          value={this.state.body}
+          onChange={this.handleChange}
+          className="resizedTextbox"
+        ></textarea>
+        <br />
+        <button disabled={!this.props.loggedInUser || !this.state.body}>
+          Add new comment
+        </button>
+        <br />
+      </form>
     );
   }
 }

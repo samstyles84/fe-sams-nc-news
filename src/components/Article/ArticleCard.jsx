@@ -1,7 +1,10 @@
 import Voter from "./Voter";
-import Comments from "./Comments";
-
+import Comments from "../Comments/Comments";
 import React from "react";
+import {
+  StyledArticleContainer,
+  StyledSingleArticle,
+} from "../../styling/styledArticle";
 
 const ArticleCard = (args) => {
   const { article, loggedInUser } = args;
@@ -9,12 +12,12 @@ const ArticleCard = (args) => {
   const dateitem = new Date(article.created_at).toLocaleDateString();
 
   return (
-    <div className="ArticleContainer">
-      <article className="SingleArticle">
+    <StyledArticleContainer className="ArticleContainer">
+      <StyledSingleArticle className="SingleArticle">
         <h2>{article.title}</h2>
-        <p>
+        <h4>
           by {article.author}, {dateitem}
-        </p>
+        </h4>
         <h6>Topic: {article.topic}</h6>
         <hr />
         <p className="ArticleBody">{article.body}</p>
@@ -26,10 +29,10 @@ const ArticleCard = (args) => {
           type="articles"
           loggedInUser={loggedInUser}
         />
-      </article>
+      </StyledSingleArticle>
       <Comments article={article} loggedInUser={loggedInUser} />
       <br />
-    </div>
+    </StyledArticleContainer>
   );
 };
 

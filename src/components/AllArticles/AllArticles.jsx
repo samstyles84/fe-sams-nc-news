@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import ArticlesList from "./ArticlesList";
-import * as api from "../utils/api";
-import Loader from "./Loader";
+import * as api from "../../utils/api";
+import Loader from "../Loader";
 import SortBar from "./SortBar";
-import ErrorPage from "./ErrorPage";
+import ErrorPage from "../ErrorPage";
 import { navigate } from "@reach/router";
+import { StyledArticlesContainer } from "../../styling/styledAllArticles";
 
 class AllArticles extends Component {
   state = {
@@ -74,10 +75,9 @@ class AllArticles extends Component {
     return (
       <div>
         <SortBar getSortMethod={this.getSortMethod} />
-        <section className="ArticleList">
-          <h3 className="ArticlesHeading">{topic} articles</h3>
-          <ArticlesList articles={articles} />
-        </section>
+        <StyledArticlesContainer className="ArticleList">
+          <ArticlesList articles={articles} topic={topic} />
+        </StyledArticlesContainer>
       </div>
     );
   }

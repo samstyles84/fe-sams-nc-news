@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import * as api from "../utils/api";
+import * as api from "../../utils/api";
+import { StyledVotingBar } from "../../styling/styledArticle";
 
 class Voter extends Component {
   state = {
@@ -16,7 +17,7 @@ class Voter extends Component {
     const { votes, loggedInUser } = this.props;
     const { optimisticVotes } = this.state;
     return (
-      <section className="votingBar">
+      <StyledVotingBar className="votingBar">
         <br />
         <button
           onClick={(event) => this.updateVote(1)}
@@ -31,7 +32,7 @@ class Voter extends Component {
         >
           Downvote!
         </button>
-      </section>
+      </StyledVotingBar>
     );
   }
 }

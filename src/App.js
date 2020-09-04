@@ -1,13 +1,13 @@
-import "./css/App.css";
+// import "./styling/App.css";
 import Header from "./components/Header";
 import { Router } from "@reach/router";
 import Homepage from "./components/Homepage";
 import Nav from "./components/Nav";
-import AllArticles from "./components/AllArticles";
-import Article from "./components/Article";
+import AllArticles from "./components/AllArticles/AllArticles";
+import Article from "./components/Article/Article";
 import LoginForm from "./components/LoginForm";
 import ErrorPage from "./components/ErrorPage";
-
+import { GlobalStyle } from "./styling/styledGlobal";
 import React, { Component } from "react";
 
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <GlobalStyle />
         <Header />
         <Nav />
         <LoginForm loginUser={this.loginUser} />

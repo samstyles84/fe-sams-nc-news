@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import CommentAdder from "./CommentAdder";
-import * as api from "../utils/api";
-import Loader from "./Loader";
+import * as api from "../../utils/api";
+import Loader from "../Loader";
 import CommentsList from "./CommentsList";
+import { StyledCommentsContainer } from "../../styling/styledComments";
 
 class Comments extends Component {
   state = {
@@ -61,7 +62,7 @@ class Comments extends Component {
     const optimisticNoOfComments =
       article.comment_count + this.state.optimisticComments;
     return (
-      <div className="CommentsSection">
+      <StyledCommentsContainer className="CommentsSection">
         <br />
         <CommentAdder
           addComment={this.addComment}
@@ -83,7 +84,7 @@ class Comments extends Component {
           )}
         </div>
         <br />
-      </div>
+      </StyledCommentsContainer>
     );
   }
 }

@@ -1,10 +1,11 @@
 import React from "react";
+import { StyledSection } from "../styling/styledGlobal";
 
 const Loader = () => {
   return (
-    <section className="Loader">
+    <StyledSection className="Loader">
       <h3>Loading...</h3>
-    </section>
+    </StyledSection>
   );
 };
 

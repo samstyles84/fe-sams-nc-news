@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "@reach/router";
+import { StyledArticleCard } from "../../styling/styledAllArticles";
 
-const ArticlesList = ({ articles }) => {
+const ArticlesList = ({ articles, topic }) => {
   return (
     <ul>
+      <h3 className="ArticlesHeading">{topic} articles</h3>
       {articles.map((article) => {
         const dateitem = new Date(article.created_at).toLocaleDateString();
         return (
-          <li key={article.article_id}>
+          <StyledArticleCard key={article.article_id}>
             <Link to={`/articles/${article.article_id}`}>
               <h3>{article.title}</h3>
             </Link>
@@ -17,7 +19,7 @@ const ArticlesList = ({ articles }) => {
             <h6>
               Votes: {article.votes} Comments: {article.comment_count}
             </h6>
-          </li>
+          </StyledArticleCard>
         );
       })}
     </ul>

@@ -1,7 +1,8 @@
 import React from "react";
+import { StyledHeader } from "../styling/styledGlobal";
 
 const Header = () => {
-  return <header className="App-header">Sam's NC News!</header>;
+  return <StyledHeader className="App-header">Sam's NC News!</StyledHeader>;
 };
 
 export default Header;

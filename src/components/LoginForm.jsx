@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import { StyledLogin } from "../styling/styledGlobal";
 
 class LoginForm extends Component {
   state = {
@@ -40,7 +41,7 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <section className="LoginForm">
+      <StyledLogin className="LoginForm">
         {this.state.loggedIn ? (
           <section>
             Logged in as {this.state.username}
@@ -69,7 +70,7 @@ class LoginForm extends Component {
             {this.state.err && <p>User not found</p>}
           </form>
         )}
-      </section>
+      </StyledLogin>
     );
   }
 }

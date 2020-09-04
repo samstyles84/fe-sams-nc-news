@@ -1,20 +1,23 @@
-import Voter from "./Voter";
+import Voter from "../Article/Voter";
 import React from "react";
 import CommentDeleter from "./CommentDeleter";
+import { StyledCommentCard } from "../../styling/styledComments";
 
 const CommentsList = ({ comments, loggedInUser, deleteComment }) => {
   return (
-    <div className="CommentsContainer">
+    <section className="CommentsContainer">
       <ul>
         {comments.map((comment) => {
           const dateitem = new Date(comment.created_at).toLocaleDateString();
           return (
-            <section key={comment.comment_id} className="SingleComment">
-              <p>
-                by {comment.author}, {dateitem}
-              </p>
+            <li key={comment.comment_id} className="SingleComment">
+              <h4>
+                {comment.author}, {dateitem}
+              </h4>
               <hr />
-              <p className="CommentBody">{comment.body}</p>
+              <StyledCommentCard className="CommentBody">
+                {comment.body}
+              </StyledCommentCard>
               <hr />
               <Voter
                 id={comment.comment_id}
@@ -27,11 +30,11 @@ const CommentsList = ({ comments, loggedInUser, deleteComment }) => {
                 comment={comment}
                 loggedInUser={loggedInUser}
               />
-            </section>
+            </li>
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 };
 

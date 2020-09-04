@@ -1,8 +1,9 @@
 import React from "react";
+import { StyledSortBar } from "../../styling/styledAllArticles";
 
 const SortBar = ({ getSortMethod }) => {
   return (
-    <div className="sortbar">
+    <StyledSortBar className="sortbar">
       Sort by:
       <button name="created_at" id="created_at" onClick={getSortMethod}>
         Date created
@@ -13,7 +14,7 @@ const SortBar = ({ getSortMethod }) => {
       <button name="votes" id="votes" onClick={getSortMethod}>
         Votes
       </button>
-    </div>
+    </StyledSortBar>
   );
 };
 

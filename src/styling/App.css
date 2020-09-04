@@ -39,6 +39,7 @@ code {
 
 hr {
   color: var(--very-dark);
+  margin: 0;
 }
 
 nav {
@@ -70,18 +71,26 @@ nav {
   background-color: var(--very-light);
 }
 
+.Loader {
+  border: 2px solid;
+  border-color: var(--very-dark);
+  border-top: 0;
+}
+
+.ErrorPage {
+  background-color: var(--middle);
+  border: 2px solid;
+  padding: 10px;
+  border-color: var(--very-dark);
+  border-top: 0;
+}
+
 .sortbar {
   padding: 10px;
   background-color: var(--middle);
   position: sticky;
   top: 108px;
   overflow-y: visible;
-  border: 2px solid;
-  border-color: var(--very-dark);
-  border-top: 0;
-}
-
-.Loader {
   border: 2px solid;
   border-color: var(--very-dark);
   border-top: 0;
@@ -136,10 +145,6 @@ li {
   margin-bottom: 10px;
   border: 2px solid;
   border-color: var(--very-dark);
-}
-
-hr {
-  margin: 0;
 }
 
 .ArticleBody {
@@ -206,12 +211,4 @@ hr {
 
 button {
   margin: 1px;
-}
-
-.ErrorPage {
-  background-color: var(--middle);
-  border: 2px solid;
-  padding: 10px;
-  border-color: var(--very-dark);
-  border-top: 0;
 }

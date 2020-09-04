@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import * as api from "../utils/api";
-import Loader from "./Loader";
+import * as api from "../../utils/api";
+import Loader from "../Loader";
 import ArticleCard from "./ArticleCard";
-import ErrorPage from "./ErrorPage";
+import ErrorPage from "../ErrorPage";
 
 class Article extends Component {
   state = { article: [], isLoading: true, err: null };
