@@ -36,7 +36,7 @@ class CommentAdder extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="CommentAdder">
+      <form onSubmit={this.handleSubmit}>
         <label htmlFor="comment"></label>
         <textarea
           name="body"
@@ -45,7 +45,6 @@ class CommentAdder extends Component {
           rows="3"
           value={this.state.body}
           onChange={this.handleChange}
-          className="resizedTextbox"
         ></textarea>
         <br />
         <button disabled={!this.props.loggedInUser || !this.state.body}>

@@ -3,7 +3,7 @@ import { StyledSection } from "../styling/styledGlobal";
 
 const Loader = () => {
   return (
-    <StyledSection className="Loader">
+    <StyledSection>
       <h3>Loading...</h3>
     </StyledSection>
   );

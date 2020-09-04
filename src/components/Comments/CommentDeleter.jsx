@@ -17,7 +17,7 @@ class CommentDeleter extends Component {
   render() {
     return (
       <section>
-        <form onSubmit={this.handleSubmit} className="CommentDeleter">
+        <form onSubmit={this.handleSubmit}>
           {this.props.loggedInUser &&
             this.props.loggedInUser === this.props.comment.author && (
               <button>Delete comment</button>

@@ -5,7 +5,7 @@ import { StyledArticleCard } from "../../styling/styledAllArticles";
 const ArticlesList = ({ articles, topic }) => {
   return (
     <ul>
-      <h3 className="ArticlesHeading">{topic} articles</h3>
+      <h3>{topic} articles</h3>
       {articles.map((article) => {
         const dateitem = new Date(article.created_at).toLocaleDateString();
         return (

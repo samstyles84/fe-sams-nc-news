@@ -1,19 +1,46 @@
 import React from "react";
-import { StyledSortBar } from "../../styling/styledAllArticles";
+import {
+  StyledSortBar,
+  StyledSortButton,
+} from "../../styling/styledAllArticles";
 
-const SortBar = ({ getSortMethod }) => {
+const SortBar = ({ getSortMethod, sort_by, order }) => {
   return (
-    <StyledSortBar className="sortbar">
+    <StyledSortBar>
       Sort by:
-      <button name="created_at" id="created_at" onClick={getSortMethod}>
+      <StyledSortButton
+        name="created_at"
+        id="created_at"
+        onClick={getSortMethod}
+        selected={sort_by === "created_at"}
+        order={order}
+      >
         Date created
-      </button>
-      <button name="comment_count" id="comment_count" onClick={getSortMethod}>
+      </StyledSortButton>
+      {sort_by === "created_at" && order === true && <span>▲</span>}
+      {sort_by === "created_at" && order === false && <span>▼</span>}
+      <StyledSortButton
+        name="comment_count"
+        id="comment_count"
+        onClick={getSortMethod}
+        selected={sort_by === "comment_count"}
+        order={order}
+      >
         Comment count
-      </button>
-      <button name="votes" id="votes" onClick={getSortMethod}>
+      </StyledSortButton>
+      {sort_by === "comment_count" && order === true && <span>▲</span>}
+      {sort_by === "comment_count" && order === false && <span>▼</span>}
+      <StyledSortButton
+        name="votes"
+        id="votes"
+        onClick={getSortMethod}
+        selected={sort_by === "votes"}
+        order={order}
+      >
         Votes
-      </button>
+      </StyledSortButton>
+      {sort_by === "votes" && order === true && <span>▲</span>}
+      {sort_by === "votes" && order === false && <span>▼</span>}
     </StyledSortBar>
   );
 };

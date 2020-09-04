@@ -62,14 +62,14 @@ class Comments extends Component {
     const optimisticNoOfComments =
       article.comment_count + this.state.optimisticComments;
     return (
-      <StyledCommentsContainer className="CommentsSection">
+      <StyledCommentsContainer>
         <br />
         <CommentAdder
           addComment={this.addComment}
           article_id={article.article_id}
           loggedInUser={loggedInUser}
         />
-        <div className="ToggleComments">
+        <div>
           <button onClick={this.toggleView}>
             {isVisible
               ? `Hide Comments (${optimisticNoOfComments})`

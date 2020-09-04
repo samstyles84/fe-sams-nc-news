@@ -74,8 +74,12 @@ class AllArticles extends Component {
     if (err) return <ErrorPage {...err} />;
     return (
       <div>
-        <SortBar getSortMethod={this.getSortMethod} />
-        <StyledArticlesContainer className="ArticleList">
+        <SortBar
+          getSortMethod={this.getSortMethod}
+          sort_by={this.state.sort_by}
+          order={this.state.order}
+        />
+        <StyledArticlesContainer>
           <ArticlesList articles={articles} topic={topic} />
         </StyledArticlesContainer>
       </div>

@@ -31,8 +31,13 @@ hr{
   border: none;
   height: 1px;
 }
+
 button{
-  margin: 1px;
+  margin: 2px;
+  font-size: 1em;
+  padding: 0.25em 1em ;
+  border: 1px solid ${styleColours.veryDark};
+  border-radius: 2px;
 }
 
 ul{
@@ -64,8 +69,8 @@ export const StyledNav = styled.nav`
   position: sticky;
   top: 0;
   background-color: ${styleColours.middle};
-  padding: 1vh;
-  height: 50px;
+  padding: 10px;
+  height: 60px;
   overflow-y: visible;
   border: 2px solid;
 `;
@@ -74,11 +79,15 @@ export const StyledNav = styled.nav`
 export const StyledLogin = styled.section`
   padding: 5px;
   position: sticky;
-  top: 73px;
+  top: 84px;
   overflow-y: visible;
   border: 2px solid;
   border-top: 0;
   background: ${styleColours.veryLight};
+
+  input {
+    height: 22px;
+  }
 `;
 
 //The below is used for homepage, loader, error page
@@ -86,3 +95,5 @@ export const StyledSection = styled.section`
   border: 2px solid;
   margin-top: -2px;
 `;
+
+export const StyledNavButton = styled.button``;

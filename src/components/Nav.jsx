@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import { Link } from "@reach/router";
-import { navigate } from "@reach/router";
-import { StyledNav } from "../styling/styledGlobal";
+import { Link, navigate } from "@reach/router";
+import { StyledNav, StyledNavButton } from "../styling/styledGlobal";
 
 class Nav extends Component {
   state = { topics: [], err: null };
@@ -34,16 +33,16 @@ class Nav extends Component {
     return (
       <StyledNav>
         <Link to="/">
-          <button>Home</button>
+          <StyledNavButton>Home</StyledNavButton>
         </Link>
         <Link to="/articles/topics/all">
-          <button>All Articles</button>
+          <StyledNavButton>All Articles</StyledNavButton>
         </Link>
         <br />
         {topics.map((topic) => {
           return (
             <Link to={`/articles/topics/${topic.slug}`} key={topic.slug}>
-              <button>{topic.slug}</button>
+              <StyledNavButton>{topic.slug}</StyledNavButton>
             </Link>
           );
         })}

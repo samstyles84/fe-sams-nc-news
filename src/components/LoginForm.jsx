@@ -41,7 +41,7 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <StyledLogin className="LoginForm">
+      <StyledLogin>
         {this.state.loggedIn ? (
           <section>
             Logged in as {this.state.username}

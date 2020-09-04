@@ -17,7 +17,7 @@ class Voter extends Component {
     const { votes, loggedInUser } = this.props;
     const { optimisticVotes } = this.state;
     return (
-      <StyledVotingBar className="votingBar">
+      <StyledVotingBar>
         <br />
         <button
           onClick={(event) => this.updateVote(1)}

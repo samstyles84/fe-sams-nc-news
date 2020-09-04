@@ -21,8 +21,21 @@ export const StyledSortBar = styled.div`
   padding: 10px;
   background-color: ${styleColours.middle};
   position: sticky;
-  top: 108px;
+  top: 126px;
   overflow-y: visible;
   border: 2px solid;
   border-top: 0;
+
+  span {
+    color: ${styleColours.quiteDark};
+  }
+`;
+
+export const StyledSortButton = styled.button`
+  ${(props) => {
+    if (props.selected) {
+      return `background: ${styleColours.quiteDark}`;
+    }
+  }};
+  margin-left: 10px;
 `;

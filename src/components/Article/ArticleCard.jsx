@@ -12,15 +12,15 @@ const ArticleCard = (args) => {
   const dateitem = new Date(article.created_at).toLocaleDateString();
 
   return (
-    <StyledArticleContainer className="ArticleContainer">
-      <StyledSingleArticle className="SingleArticle">
+    <StyledArticleContainer>
+      <StyledSingleArticle>
         <h2>{article.title}</h2>
         <h4>
           by {article.author}, {dateitem}
         </h4>
         <h6>Topic: {article.topic}</h6>
         <hr />
-        <p className="ArticleBody">{article.body}</p>
+        <p>{article.body}</p>
         <hr />
 
         <Voter
